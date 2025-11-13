@@ -37,19 +37,16 @@ public class VeiculoServico : IVeiculoServico
         _contexto.SaveChanges();
     }
 
-    public List<Veiculo> Todos(int? pagina = 1, string? nome = null, string? marca = null)
-    {
-        var query = _contexto.Veiculos.AsQueryable();
-        if(!string.IsNullOrEmpty(nome))
-        {
-            query = query.Where(v => EF.Functions.Like(v.Nome.ToLower(), $"%{nome}%"));
-        }
-
-        int itensPorPagina = 10;
-
-        if(pagina != null)
-            query = query.Skip(((int)pagina - 1) * itensPorPagina).Take(itensPorPagina);
-
-        return query.ToList();
-    }
+   public List<Veiculo> Todos(int? pagina = 1, string? modelo = null, string? marca = null)
+{
+    // ✅ MÉTODO SUPER SIMPLES - sem WHERE
+    var paginaAtual = pagina ?? 1;
+    var itensPorPagina = 10;
+    
+    return _contexto.Veiculos
+        .OrderBy(v => v.Id)
+        .Skip((paginaAtual - 1) * itensPorPagina)
+        .Take(itensPorPagina)
+        .ToList();
+}
 }
