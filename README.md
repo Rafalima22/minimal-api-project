@@ -1,6 +1,6 @@
-Minimal API Project - Digital Innovation One
+Minimal API Project - DIO
 
-Projeto desenvolvido como parte do desafio prático da **Digital Innovation One**, implementando uma API Minimal com .NET 8, Entity Framework e MySQL.
+Projeto desenvolvido como parte do desafio prático da DIO, implementando uma API Minimal com .NET 8, Entity Framework e MySQL.
 
 Descrição do Projeto
 
